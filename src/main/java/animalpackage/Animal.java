@@ -1,16 +1,20 @@
 package animalpackage;
 
 public class Animal {
-    private final AnimalType animalType;
-    private final String name;
+    private AnimalType type;
+    private String name;
 
-    public Animal(AnimalType animalType, String name) {
-        this.animalType = animalType;
+    public Animal() {
+
+    }
+
+    public Animal(AnimalType type, String name) {
+        this.type = type;
         this.name = name;
     }
 
-    public AnimalType getAnimalType() {
-        return animalType;
+    public AnimalType getType() {
+        return type;
     }
 
     public String getName() {
