@@ -17,12 +17,16 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String body = req.getReader().lines().collect(Collectors.joining());
-        User user = new ObjectMapper().readValue(body, User.class);
 
-        Map<String, String> users = UserRepository.getUsers();
+        if (!body.isEmpty()) {
+            User user = new ObjectMapper().readValue(body, User.class);
+            Map<String, String> users = UserRepository.getUsers();
 
-        if (users.get(user.getUsername()).equals(user.getPassword())) {
-            resp.addCookie(new Cookie("authorized", "true"));
+            if (users.get(user.getUsername()) != null) {
+                if (users.get(user.getUsername()).equals(user.getPassword())) {
+                    resp.addCookie(new Cookie("authorized", "true"));
+                }
+            }
         }
     }
 }
