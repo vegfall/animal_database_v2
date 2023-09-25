@@ -18,6 +18,8 @@ public class HttpServer {
         WebAppContext webAppContext = new WebAppContext(resource, "/");
 
         webAppContext.addServlet(new ServletHolder(new ApiServlet()), "/api");
+        webAppContext.addServlet(new ServletHolder(new LoginServlet()), "/login");
+
         webAppContext.addFilter(new FilterHolder(new AnimalFilter()), "/api", EnumSet.of(DispatcherType.REQUEST));
         server.setHandler(webAppContext);
 
