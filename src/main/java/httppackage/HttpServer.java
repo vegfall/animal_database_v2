@@ -12,7 +12,7 @@ public class HttpServer {
         Resource resource = Resource.newClassPathResource("/website");
         WebAppContext webAppContext = new WebAppContext(resource, "/");
 
-        webAppContext.addServlet(new ServletHolder(new ServerServlet()), "/api");
+        webAppContext.addServlet(new ServletHolder(new ApiServlet()), "/api");
         server.setHandler(webAppContext);
 
         server.start();
