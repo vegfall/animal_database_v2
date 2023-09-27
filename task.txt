@@ -1,0 +1,8 @@
+Homework for 25 September
+
+Add logging to your server. Bonus if you figure out how to do File logging in addition to Console.
+Set up Jackson to map json to Java classes
+
+Add Filters to your server.
+First Filter - added to the /login url, checks a post request for a body that includes username and password, checks them against a repository, and if they are correct, issues a cookie
+Second Filter - added to all other urls, checks to see if there is a cookie that shows they have authentication, and if they have not, sends a 401.
